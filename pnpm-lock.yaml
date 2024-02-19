@@ -20,6 +20,9 @@ dependencies:
   convex:
     specifier: ^1.9.0
     version: 1.9.0(react-dom@18.2.0)(react@18.2.0)
+  lucide-react:
+    specifier: ^0.334.0
+    version: 0.334.0(react@18.2.0)
   next:
     specifier: 14.1.0
     version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -2359,6 +2362,14 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide-react@0.334.0(react@18.2.0):
+    resolution: {integrity: sha512-y0Rv/Xx6qAq4FutZ3L/efl3O9vl6NC/1p0YOg6mBfRbQ4k1JCE2rz0rnV7WC8Moxq1RY99vLATvjcqUegGJTvA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /map-obj@4.3.0:
     resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==}
