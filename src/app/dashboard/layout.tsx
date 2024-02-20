@@ -1,6 +1,6 @@
-import { Navbar } from "@/components/NavBar/NavBar";
-import OrganizationSidebar from "@/components/SideBar/OrganizationSidebar";
-import SideBar from "@/components/SideBar/SideBar";
+import { Navbar } from "@/components/dashboard/NavBar/NavBar";
+import OrganizationSidebar from "@/components/dashboard/SideBar/OrganizationSidebar";
+import SideBar from "@/components/dashboard/SideBar/SideBar";
 
 type layoutProps = {
   children: React.ReactNode;
@@ -13,9 +13,7 @@ const layout = ({ children }: layoutProps) => {
       <OrganizationSidebar />
       <div className="flex flex-col col-span-2 lg:col-span-1">
         <Navbar />
-        <main className="flex flex-grow flex-col">
-          {children}
-        </main>
+        <main className="flex flex-grow flex-col">{children}</main>
       </div>
     </div>
   );
