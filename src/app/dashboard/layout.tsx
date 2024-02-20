@@ -8,7 +8,7 @@ type layoutProps = {
 
 const layout = ({ children }: layoutProps) => {
   return (
-    <div className="min-h-screen grid grid-cols-[auto,250px,1fr]">
+    <div className="min-h-screen grid grid-cols-[auto,auto,1fr]">
       <SideBar />
       <OrganizationSidebar />
       <div className="flex flex-col col-span-2 lg:col-span-1">
