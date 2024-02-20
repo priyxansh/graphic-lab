@@ -1,4 +1,4 @@
-import { NewButton } from "../global/NewButton";
+import { NewButton } from "./NewButton";
 import OrganizationList from "./OrganizationList";
 
 type SideBarProps = {};
