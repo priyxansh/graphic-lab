@@ -1,4 +1,4 @@
-import NavBar from "@/components/NavBar";
+import { Navbar } from "@/components/NavBar/NavBar";
 import OrganizationSidebar from "@/components/SideBar/OrganizationSidebar";
 import SideBar from "@/components/SideBar/SideBar";
 
@@ -12,7 +12,7 @@ const layout = ({ children }: layoutProps) => {
       <SideBar />
       <OrganizationSidebar />
       <div className="flex flex-col col-span-2 lg:col-span-1">
-        <NavBar />
+        <Navbar />
         <main className="flex flex-grow flex-col">
           {children}
         </main>

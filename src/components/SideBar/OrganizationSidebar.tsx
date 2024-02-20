@@ -19,7 +19,7 @@ const OrganizationSidebar = () => {
   const favorites = searchParams.get("favorites");
 
   return (
-    <div className="hidden lg:flex flex-col space-y-6 w-[206px] p-5 pt-5">
+    <div className="hidden lg:flex flex-col space-y-6 w-[206px] p-5 pt-5 border-r">
       <Link href="/">
         <div className="flex items-center justify-center">
           <span className={cn("font-semibold text-2xl", font.className)}>
