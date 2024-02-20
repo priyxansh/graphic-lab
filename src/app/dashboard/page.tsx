@@ -1,9 +1,26 @@
-type DashboardPageProps = {};
+"use client";
 
-const DashboardPage = ({}: DashboardPageProps) => {
+import BoardList from "@/components/dashboard/BoardList";
+import NoOrganization from "@/components/dashboard/NoOrganization";
+import { useOrganization } from "@clerk/nextjs";
+
+interface DashboardPageProps {
+  searchParams: {
+    search?: string;
+    favorites?: string;
+  };
+}
+
+const DashboardPage = ({ searchParams }: DashboardPageProps) => {
+  const { organization } = useOrganization();
+
   return (
-    <div className="flex-grow">
-      <h1>Dashboard</h1>
+    <div className="flex-1 h-[calc(100%-80px)] p-6">
+      {!organization ? (
+        <NoOrganization />
+      ) : (
+        <BoardList orgId={organization.id} query={searchParams} />
+      )}
     </div>
   );
 };
