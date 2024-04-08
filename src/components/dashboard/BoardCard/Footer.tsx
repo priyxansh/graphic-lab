@@ -2,14 +2,14 @@ import { Star } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-type FooterProps = {
+interface FooterProps {
   title: string;
   authorLabel: string;
   createdAtLabel: string;
   isFavorite: boolean;
   onClick: () => void;
   disabled: boolean;
-};
+}
 
 const Footer = ({
   title,
