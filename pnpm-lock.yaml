@@ -33,8 +33,11 @@ dependencies:
     specifier: ^2.1.0
     version: 2.1.0
   convex:
-    specifier: ^1.9.0
-    version: 1.9.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^1.11.0
+    version: 1.11.0(react-dom@18.2.0)(react@18.2.0)
+  convex-helpers:
+    specifier: ^0.1.27
+    version: 0.1.27(convex@1.11.0)(react@18.2.0)
   date-fns:
     specifier: ^3.3.1
     version: 3.3.1
@@ -1810,8 +1813,27 @@ packages:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
 
-  /convex@1.9.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ORaiHNmzofLUui6hVnFRVwjFh4fnWU3hpneyru0C49bLYc4s1UVC/+s3fIaXYnpKoWj+snspaHOteRuV6eF5uA==}
+  /convex-helpers@0.1.27(convex@1.11.0)(react@18.2.0):
+    resolution: {integrity: sha512-Oc3xluBNd+rxy+Lok/X9QjaYmJddAZyMbOSE5OsFWsOulGqOp99PYAnngAYA0T/1Uw/D4j1bet2ql+nZLMtICg==}
+    peerDependencies:
+      convex: ^1.10.0
+      hono: ^4.0.5
+      react: ^17.0.2 || ^18.0.0
+      zod: ^3.22.4
+    peerDependenciesMeta:
+      hono:
+        optional: true
+      react:
+        optional: true
+      zod:
+        optional: true
+    dependencies:
+      convex: 1.11.0(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /convex@1.11.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-YVQ064Nx/cBWN01AJBL6TuJRzZfpxT6GQA/ne23pevmXwDohy5Lup9dGGnUkKLwFMwjqD/Wv4oXcotyFirBbJg==}
     engines: {node: '>=16.15.1', npm: '>=7.0.0'}
     hasBin: true
     peerDependencies:
@@ -1832,6 +1854,7 @@ packages:
       esbuild: 0.17.19
       jwt-decode: 3.1.2
       node-fetch: 2.7.0
+      prettier: 3.2.5
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -3440,6 +3463,12 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
     dev: true
+
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: false
 
   /prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}

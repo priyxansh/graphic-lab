@@ -18,7 +18,11 @@ type BoardListProps = {
 };
 
 const BoardList = ({ orgId, query }: BoardListProps) => {
-  const data = useQuery(api.boards.get, { orgId });
+  const data = useQuery(api.boards.get, {
+    orgId,
+    search: query.search,
+    favorites: query.favorites,
+  });
 
   if (data === undefined) {
     return <Spinner className="grid place-items-center" />;
