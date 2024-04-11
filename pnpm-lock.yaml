@@ -8,6 +8,12 @@ dependencies:
   '@clerk/nextjs':
     specifier: ^4.29.7
     version: 4.29.7(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
+  '@liveblocks/client':
+    specifier: ^1.11.1
+    version: 1.11.1
+  '@liveblocks/react':
+    specifier: ^1.11.1
+    version: 1.11.1(react@18.2.0)
   '@radix-ui/react-alert-dialog':
     specifier: ^1.0.5
     version: 1.0.5(@types/react-dom@18.2.19)(@types/react@18.2.56)(react-dom@18.2.0)(react@18.2.0)
@@ -526,6 +532,28 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /@liveblocks/client@1.11.1:
+    resolution: {integrity: sha512-+94LplyUElOZpKECX/rF1UJmkU9WRj3S1aD9w6iOYIitT1RFW+9Z4Et7nxO43FUODaheR1a40iqyikfDcRXswA==}
+    dependencies:
+      '@liveblocks/core': 1.11.1
+    dev: false
+
+  /@liveblocks/core@1.11.1:
+    resolution: {integrity: sha512-QkrONvIkVBGqZynrgGTF4jI4oFcui4+0Vf8QYdvvdtqXG6t6mcryDic1Rq53tuKsPzOXP1Nb7XSW3LH1z8ERxQ==}
+    dev: false
+
+  /@liveblocks/react@1.11.1(react@18.2.0):
+    resolution: {integrity: sha512-8ut0ONis8XOZEkNoVMZ1zOs34jja1aciPBBrqeV+KQYTYjgbcKXdpc2QyRIl3E6FOTPq2lgf0mpDQMtTU0n2eQ==}
+    peerDependencies:
+      react: ^16.14.0 || ^17 || ^18
+    dependencies:
+      '@liveblocks/client': 1.11.1
+      '@liveblocks/core': 1.11.1
+      nanoid: 3.3.7
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
 
   /@next/env@14.1.0:
     resolution: {integrity: sha512-Py8zIo+02ht82brwwhTg36iogzFqGLPXlRGKQw5s+qP/kMNc4MAyDeEwBKDijk6zTIbegEgu8Qy7C1LboslQAw==}
