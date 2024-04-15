@@ -19,7 +19,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
   const history = useHistory()
   const canUndo = useCanUndo()
-  const canRedo = useCanRedo
+  const canRedo = useCanRedo()
 
   return (
     <main className="h-full w-full relative bg-neutral-100 touch-none">
@@ -28,8 +28,8 @@ export const Canvas = ({ boardId }: CanvasProps) => {
       <Toolbar
         canvasState={canvasState}
         setCanvasState={setCanvasState}
-        canRedo={false}
-        canUndo={false}
+        canRedo={canRedo}
+        canUndo={canUndo}
         undo={history.undo}
         redo={history.redo}
       />
