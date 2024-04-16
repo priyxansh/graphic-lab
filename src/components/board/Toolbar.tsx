@@ -29,7 +29,7 @@ export const Toolbar = ({
   canRedo,
 }: ToolbarProps) => {
   return (
-    <div className=" absolute top-[50%] translate-y-[50%] left-2 flex flex-col gap-y-4 ">
+    <div className="absolute h-fit top-[50%] -translate-y-[50%] left-2 flex flex-col gap-y-4 ">
       <div className="bg-white rounded-md p-1.5 flex gap-y-1 flex-col items-center shadow-md">
         <ToolButton
           label="Select"
@@ -42,37 +42,37 @@ export const Toolbar = ({
         <ToolButton
           label="Text"
           icon={Type}
-          onClick={() => setCanvasState({ mode: CanvasMode.Inseting, layerType: LayerType.Text})}
+          onClick={() => setCanvasState({ mode: CanvasMode.Inserting, layerType: LayerType.Text})}
           isActive={
-            canvasState.mode === CanvasMode.Inseting && canvasState.layerType === LayerType.Text
+            canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.Text
           }
         />
         <ToolButton
           label="Sticky note"
           icon={StickyNote}
           onClick={() => setCanvasState({
-            mode: CanvasMode.Inseting,
+            mode: CanvasMode.Inserting,
             layerType: LayerType.StickyNote
           })}
-          isActive={ canvasState.mode === CanvasMode.Inseting && canvasState.layerType === LayerType.StickyNote}
+          isActive={ canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.StickyNote}
         />
         <ToolButton
           label="Rectangle"
           icon={Square}
           onClick={() => setCanvasState({
-            mode: CanvasMode.Inseting,
+            mode: CanvasMode.Inserting,
             layerType: LayerType.Rectangle
           })}
-          isActive={ canvasState.mode === CanvasMode.Inseting && canvasState.layerType === LayerType.Rectangle}
+          isActive={ canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.Rectangle}
         />
         <ToolButton
           label="Ellipse"
           icon={Circle}
           onClick={() => setCanvasState({
-            mode: CanvasMode.Inseting,
+            mode: CanvasMode.Inserting,
             layerType: LayerType.Ellipse
           })}
-          isActive={ canvasState.mode === CanvasMode.Inseting && canvasState.layerType === LayerType.Ellipse}
+          isActive={ canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.Ellipse}
         />
         <ToolButton
           label="Pen"
