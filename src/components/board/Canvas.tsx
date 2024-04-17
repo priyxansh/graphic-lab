@@ -8,6 +8,8 @@ import {
   Color,
   LayerType,
   Point,
+  XYWH,
+  Side,
 } from "@/types/canvas";
 import { Info } from "./Info";
 import { Toolbar } from "./Toolbar";
@@ -22,7 +24,7 @@ import {
   useStorage,
 } from "../../../liveblocks.config";
 import CursorsPresence from "./CursorsPresence";
-import { ConnectionIdToColor, pointerEventToCanvasPoint } from "@/lib/utils";
+import { ConnectionIdToColor, pointerEventToCanvasPoint, resizeBounds } from "@/lib/utils";
 import { LiveObject } from "@liveblocks/client";
 import Layer from "./Layer";
 import { SelectionBox } from "./SelectionBox";
@@ -91,6 +93,37 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [lastUsedColor]
   );
 
+
+  const resizeSelectedLayer = useMutation((
+    {storage, self},
+    point: Point
+  ) => {
+    if(canvasState.mode !== CanvasMode.Resizing) {
+      return;
+    }
+
+    const bounds = resizeBounds(canvasState.initialBounds, canvasState.corner, point);
+
+    const liveLayers = storage.get("layers");
+    const layer = liveLayers.get(self.presence.selection[0]);
+
+    if(layer) {
+      layer.update(bounds);
+    }
+  },[canvasState])
+
+  const onResizeHandlePointerDown = useCallback((
+    corner: Side,
+    initialBounds: XYWH
+  ) => {
+    history.pause();
+    setCanvasState({
+      mode: CanvasMode.Resizing,
+      initialBounds,
+      corner,
+    });
+  }, [history]);
+
   const onWheel = useCallback((e: React.WheelEvent) => {
     e.preventDefault();
     setCamera((camera) => ({
@@ -101,10 +134,17 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
   const onPointerMove = useMutation(
     ({ setMyPresence }, e: React.PointerEvent) => {
+      e.preventDefault();
       const current = pointerEventToCanvasPoint(e, camera);
+
+      if(canvasState.mode === CanvasMode.Resizing) {
+        resizeSelectedLayer(current);
+        
+      }
+
       setMyPresence({ cursor: current });
     },
-    []
+    [camera, canvasState, resizeSelectedLayer]
   );
 
   const onPointerLeave = useMutation(({ setMyPresence }) => {
@@ -198,7 +238,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
               selectionColor={layerIdsToColorSelection[layerId]}
             />
           ))}
-          <SelectionBox onResizeHandlePointerDown={() => {}} />
+          <SelectionBox onResizeHandlePointerDown={onResizeHandlePointerDown} />
 
           <CursorsPresence />
         </g>

@@ -6,7 +6,7 @@ import { LayerType, Side, XYWH } from "@/types/canvas";
 import { UseSelectionBounds } from "@/hooks/UseSelectionBounds";
 
 interface SelectionBoxProps {
-  onResizeHandlePointerDown: () => void;
+  onResizeHandlePointerDown: (corner: Side, initialBounds:XYWH) => void;
 }
 
 const HANDLE_WIDTH = 8;
@@ -52,6 +52,7 @@ export const SelectionBox = memo(
               y={0}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Top + Side.Left, bounds);
               }}
             />
 
@@ -67,6 +68,7 @@ export const SelectionBox = memo(
               y={0}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Top, bounds);
               }}
             />
 
@@ -82,6 +84,7 @@ export const SelectionBox = memo(
               y={0}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Top + Side.Right, bounds);
               }}
             />
 
@@ -97,6 +100,7 @@ export const SelectionBox = memo(
               y={0}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Right, bounds);
               }}
             />
 
@@ -112,6 +116,7 @@ export const SelectionBox = memo(
               y={0}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Bottom + Side.Right, bounds);
               }} />
 
               <rect
@@ -126,6 +131,7 @@ export const SelectionBox = memo(
               y={0}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Bottom, bounds);
               }} />
 
               <rect
@@ -140,6 +146,7 @@ export const SelectionBox = memo(
               y={0}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Bottom + Side.Left, bounds);
               }} />
 
               <rect
@@ -154,6 +161,7 @@ export const SelectionBox = memo(
               y={0}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Left, bounds);
               }} />
           </>
         )}
