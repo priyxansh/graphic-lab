@@ -4,6 +4,9 @@ import { memo } from "react";
 import { useStorage } from "../../../liveblocks.config";
 import { LayerType } from "@/types/canvas";
 import Rectangle from "./Rectangle";
+import { Ellipse } from "./Ellipse";
+import { Text } from "./Text";
+import { StickyNote } from "./StickyNote";
 
 type LayerProps = {
   layerId: string;
@@ -20,6 +23,33 @@ const Layer = memo(
     }
 
     switch (layer.type) {
+      case LayerType.StickyNote:
+        return (
+          <StickyNote
+          id={layerId}
+          layer={layer}
+          onPointerDown={onLayerPointerDown}
+          selectionColor={selectionColor}
+          />
+        )
+      case LayerType.Text:
+        return (
+          <Text 
+          id={layerId}
+          layer={layer}
+          onPointerDown={onLayerPointerDown}
+          selectionColor={selectionColor}
+          />
+        )
+      case LayerType.Ellipse:
+        return (
+          <Ellipse
+          id={layerId}
+          layer={layer}
+          onPointerDown={onLayerPointerDown}
+          selectionColor={selectionColor}
+          />
+        )
       case LayerType.Rectangle:
         return (
           <Rectangle
