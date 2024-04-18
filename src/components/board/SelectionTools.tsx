@@ -8,7 +8,7 @@ import { useDeleteLayers } from "@/hooks/useDeleteLayers";
 import ColorPicker from "./ColorPicker";
 import { Button } from "../ui/button";
 import Hint from "../global/Hint";
-import { Trash2Icon } from "lucide-react";
+import { BringToFrontIcon, SendToBackIcon, Trash2Icon } from "lucide-react";
 
 type SelectionToolsProps = {
   camera: Camera;
@@ -38,6 +38,46 @@ const SelectionTools = memo(
 
     const selectionBounds = UseSelectionBounds();
 
+    const moveToBack = useMutation(
+      ({ storage }) => {
+        const liveLayerIds = storage.get("layerIds");
+        const indices: number[] = [];
+
+        const array = liveLayerIds.toArray();
+
+        for (let i = 0; i < array.length; i++) {
+          if (selection.includes(array[i])) {
+            indices.push(i);
+          }
+        }
+
+        for (let i = 0; i < indices.length; i++) {
+          liveLayerIds.move(indices[i], i);
+        }
+      },
+      [selection]
+    );
+
+    const moveToFront = useMutation(
+      ({ storage }) => {
+        const liveLayerIds = storage.get("layerIds");
+        const indices: number[] = [];
+
+        const array = liveLayerIds.toArray();
+
+        for (let i = 0; i < array.length; i++) {
+          if (selection.includes(array[i])) {
+            indices.push(i);
+          }
+        }
+
+        for (let i = indices.length - 1; i >= 0; i--) {
+          liveLayerIds.move(indices[i], liveLayerIds.length - 1);
+        }
+      },
+      [selection]
+    );
+
     if (!selectionBounds) {
       return null;
     }
@@ -53,6 +93,18 @@ const SelectionTools = memo(
         }}
       >
         <ColorPicker onChange={setFill} />
+        <div className="flex flex-col gap-y-0.5">
+          <Hint label="Bring To Front">
+            <Button size={"icon"} variant={"board"} onClick={moveToFront}>
+              <BringToFrontIcon />
+            </Button>
+          </Hint>
+          <Hint label="Send To Back">
+            <Button size={"icon"} variant={"board"} onClick={moveToBack}>
+              <SendToBackIcon />
+            </Button>
+          </Hint>
+        </div>
         <div className="flex items-center pl-2 ml-2 border-l border-neutral-200">
           <Hint label="Delete">
             <Button
