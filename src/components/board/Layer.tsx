@@ -30,7 +30,7 @@ const Layer = memo(
           />
         );
       default:
-        console.log("Unknown layer type");
+        console.log("Unknown layer type", layer.type);
         return null;
     }
   }
