@@ -75,10 +75,12 @@ const Layer = memo(
           />
         );
       default:
-        console.log("Unknown layer type", layer.type);
+        console.log("Unknown layer type", layer);
         return null;
     }
   }
 );
 
+
+Layer.displayName = "Layer"
 export default Layer;

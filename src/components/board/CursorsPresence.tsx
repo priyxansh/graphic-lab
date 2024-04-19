@@ -11,7 +11,7 @@ const Drafts = () => {
   const others = useOthersMapped(
     (other) => ({
       pencilDraft: other.presence.pencilDraft,
-      penColor: other.presence.penColor,
+      penColor: other.presence.pencilColor,
     }),
     shallow
   );
@@ -46,4 +46,5 @@ const CursorsPresence = memo(({}: CursorsPresenceProps) => {
   );
 });
 
+CursorsPresence.displayName = "CursorPresence"
 export default CursorsPresence;
